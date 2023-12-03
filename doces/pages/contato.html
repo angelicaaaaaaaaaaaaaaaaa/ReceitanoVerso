@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/style.css">
+    <style>
+        .campoGrande{
+            position: relative;
+            z-index: 2;
+            width: 300px;
+            margin: 0 auto;
+            padding: 40px;
+            margin-top: 100px;
+            background-color: rgba(236, 233, 236, 0.521);
+            border-radius: 15px;
+        }
+
+        .campo{
+            justify-content: center;
+        }
+        
+    header{
+        top: 0;
+        position: fixed;
+        background-color: white;
+        width: 100%;
+        height: 70px;
+        display: flex;
+        
+    }
+    
+    .rede{
+        padding: 10px;
+        border-radius: 8px;
+        /* background-color: rgb(233, 223, 231); */
+        color: rgb(54, 53, 53);
+    }
+
+    
+    
+    header > .logo{
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: rgb(82, 61, 52); */
+    }
+    
+    header > .logo > img{
+        width: 120px;
+        height: 60px;
+        background-color: red;
+        background-image: url('public/img/imagem6.jpeg');
+
+    }
+    
+    header > .menu{
+        width: 70%;
+        height: 100%;
+        padding: 20px;
+        /* background-color: rgb(144, 216, 130); */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    header > .menu > ul{
+        width: 100%;
+        /* height: 100%; */
+        display: flex;
+        gap: 2%;
+        justify-content: center;
+        /* background-color: rgb(31, 97, 97); */
+    }
+    
+    header > .menu > ul > li{
+        list-style: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .imgf{
+        z-index: 1;
+        opacity: 0.2;
+    }
+
+    body{
+        background-color: black;
+        
+    }
+    
+    </style>
+</head>
+<body>
+    <header style="z-index: 999;">
+        <div class="logo">
+            <img src="/public/img/imagem6.jpeg" alt="">
+        </div>
+        <div class="menu">
+            <ul>
+                <li id="home">Home</li>
+                <li id="produtos">Produtos</li>
+                <li id="produtos"><a style="text-decoration: none;color: black;" href="/page/contato">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+    <img class="imgf" width="100%" height="100%" style="position: absolute;" src="/public/img/imagem1.jpg" alt="">
+    <div class="separador" style="height: 70px;"></div>
+    <section class="banner">
+        
+    </section>
+    <div class="campoGrande">
+
+        <div class="campo" style="display: flex; align-items: center; margin-bottom: 20px">
+            <img style="height: 40px; width: 40px; background:color" src="/public/img/insta.png" alt=""><a class="rede" href="">Instagram</a>
+       </div>
+        <div class="campo" style="display: flex; align-items: center; 
+        ">
+            <img style="height: 40px; width: 40px; background:color" src="/public/img/wpp.png" alt=""><a class="rede" href="">WhatsApp</a>
+       </div>
+    </div>
+
+    
+   
+
+    <%- include('partials/script.html') %>
+    
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/style.css">
+    <title>Document</title>
+
+    <style>
+        .display{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="black">
+
+    
+    <header>
+        <div class="logo">
+            <img src="public/img/imagem6.jpeg" alt="">
+        </div>
+        <div class="menu">
+            <ul>
+                <li id="home">Home</li>
+                <li id="produtos">Produtos</li>
+            </ul>
+        </div>
+    </header>
+    <div style="height: 70px;"></div>
+    <section class="pedidos">
+
+        <div class="form">
+            
+
+            
+            
+            <form id="form" enctype="multipart/form-data" method="post" action="/pedido/cadastro">
+                <input style="background-color: black; color: white; font-size: 30px; border: none" type="text" name="produto" value="<%= produto.nome %>" readonly>
+                <span style="color: white; font-size: 20px">Valor: </span><input id="valor" style="background-color: black; color: white; font-size: 30px; border: none" type="text"  value="<%= produto.valor %>" readonly>
+                <span style="color: white; font-size: 20px">Total: </span><input id="valorTotal" style="background-color: black; color: white; font-size: 30px; border: none" type="text"  name="valor"  readonly>
+                <input  type="text" name="nome"  placeholder="nome">
+                <input type="number" name="numero" placeholder="Telefone">
+                <input type="text" name="pg" placeholder="Forma de pagamento">
+                <input id="qtd" type="number" name="qtd" placeholder="Quantidade">
+                <div id="calc" style="padding: 10px; width: 45px ;color: white; cursor:pointer; background-color: rgb(210, 201, 211)" >OK</div> 
+                <input id="f" class="display" type="text" name="rua" placeholder="rua">
+                <input id="f" class="display" type="number" name="num" placeholder="Numero da casa">
+                <input id="f" class="display" type="text" name="bairro" placeholder="Bairro">
+                <input id="f" class="display" type="submit" value="Enviar" >
+            </form>
+        </div>
+        <div class="imgPedido">
+            <img src="<%= produto.img %>" alt="">
+        </div>
+    </section>
+</div>
+<script>
+    var valorTotal = document.getElementById('valorTotal')
+    var valor = document.getElementById('valor')
+    var qtd = document.getElementById('qtd')
+    var calc = document.getElementById('calc')
+    console.log(valor.value)
+    
+    calc.addEventListener('click', function(){
+        
+        valorTotal.value = (valor.value * qtd.value).toFixed(2)    
+
+        var all = document.querySelectorAll('#f');
+
+        all.forEach(function (element) {
+            element.classList.remove('display');
+        });
+        
+
+    })
+    
+
+</script>
+
+
+</body>
+</html>

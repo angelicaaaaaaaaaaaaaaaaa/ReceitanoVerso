@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/adm.css">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        header{
+            position: fixed;
+            background-color: white;
+            width: 100%;
+            height: 70px;
+            display: flex;
+        }
+        
+        header > .logo{
+            width: 30%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: rgb(82, 61, 52); */
+        }
+        
+        header > .logo > img{
+            width: 120px;
+            height: 60px;
+            background-color: red;
+        }
+        
+        header > .menu{
+            width: 70%;
+            height: 100%;
+            padding: 20px;
+            /* background-color: rgb(144, 216, 130); */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        header > .menu > ul{
+            width: 100%;
+            /* height: 100%; */
+            display: flex;
+            gap: 2%;
+            justify-content: center;
+            /* background-color: rgb(31, 97, 97); */
+        }
+        
+        header > .menu > ul > li{
+            list-style: none;
+            font-size: 20px;
+        }
+        
+        .mostruarioAdm{
+            background-color: brown;
+            padding: 100px 5%;
+        }
+        
+        .mostruarioAdm > form{
+        }
+        .produtosAdm{
+            background-color: brown;
+            padding: 100px 5%;
+        }
+        
+        .produtosAdm > form{
+        }
+        
+        table, th, td {
+            padding: 2px 15px;
+            border:1px solid black;
+            text-align: center;
+            border-collapse: collapse;
+          }
+        
+          .pedidos{
+            margin: 0 auto;
+            padding: 20px;
+          }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="public/img/imagem6.jpeg" alt="">
+        </div>
+        <div class="menu">
+            <ul>
+                <li id="site"><a href="/adm/painel">Site</a></li>
+                    <li id="pedido"><a href="/adm/pedido">Pedido</a></li>
+            </ul>
+        </div>
+    </header>
+    <div style="height: 70px;"></div>
+    <div class="pedidos">
+        <table style="width: 100%;">
+
+            <tr>
+                <th>Produto</th>
+                <th>Cliente</th>
+                <th>telefone</th>
+                <th>pagamento</th>
+                <th>Qtd</th>
+                <th>valor</th>
+                <th>Rua</th>
+                <th>Casa</th>
+                <th>Bairro</th>
+            </tr>
+    <% for(let i = 0; i < pedidos.length; i++){ %>
+        <td><%= pedidos[i].produto %></td>
+        <td><%= pedidos[i].nome %></td>
+        <td><%= pedidos[i].numero %></td>
+        <td><%= pedidos[i].pg %></td>
+        <td><%= pedidos[i].qtd %></td>
+        <td><%= pedidos[i].valor %></td>
+        <td><%= pedidos[i].rua %></td>
+        <td><%= pedidos[i].num %></td>
+        <td><%= pedidos[i].bairro %></td>
+            <tr ondblclick="alternarCor(this)">
+
+            </tr>
+    <% } %>
+        </table>
+    </div>
+    <script>
+        
+            document.addEventListener("DOMContentLoaded", function () {
+                // Recuperar informações salvas do armazenamento local
+                const savedColors = JSON.parse(localStorage.getItem("savedColors")) || {};
+        
+                // Obter todas as linhas da tabela
+                const rows = document.querySelectorAll(".pedidos table tr");
+        
+                // Iterar sobre as linhas e aplicar a cor salva, se existir
+                rows.forEach((row, index) => {
+                    const key = `row${index}`;
+                    if (savedColors[key]) {
+                        row.style.backgroundColor = savedColors[key];
+                    }
+                });
+        
+                // Adicionar o evento de clique duplo nas linhas
+                rows.forEach((row, index) => {
+                    row.addEventListener("dblclick", function () {
+                        const key = `row${index}`;
+                        const currentColor = row.style.backgroundColor === 'rgb(95, 163, 90)' ? '' : 'rgb(95, 163, 90)';
+                        row.style.backgroundColor = currentColor;
+        
+                        // Salvar a cor no armazenamento local
+                        savedColors[key] = currentColor;
+                        localStorage.setItem("savedColors", JSON.stringify(savedColors));
+                    });
+                });
+            });
+            setTimeout(function() {
+                location.reload();
+            }, 5000);
+        
+    </script>
+</body>
+</html>

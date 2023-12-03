@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="adm.css">
+    <!-- <link rel="stylesheet" href="adm.css"> -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        header{
+            position: fixed;
+            background-color: white;
+            width: 100%;
+            height: 70px;
+            display: flex;
+        }
+        
+        header > .logo{
+            width: 30%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: rgb(82, 61, 52); */
+        }
+        
+        header > .logo > img{
+            width: 120px;
+            height: 60px;
+            background-color: red;
+        }
+        
+        header > .menu{
+            width: 70%;
+            height: 100%;
+            padding: 20px;
+            /* background-color: rgb(144, 216, 130); */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        header > .menu > ul{
+            width: 100%;
+            /* height: 100%; */
+            display: flex;
+            gap: 2%;
+            justify-content: center;
+            /* background-color: rgb(31, 97, 97); */
+        }
+        
+        header > .menu > ul > li{
+            list-style: none;
+            font-size: 20px;
+        }
+        
+        .mostruarioAdm{
+            background-color: brown;
+            padding: 100px 5%;
+        }
+        
+        .mostruarioAdm > form{
+        }
+        .produtosAdm{
+            background-color: brown;
+            padding: 100px 5%;
+        }
+        
+        .produtosAdm > form{
+        }
+        
+        table, th, td {
+            border:1px solid black;
+            text-align: center;
+            border-collapse: collapse;
+          }
+        
+          .pedidos{
+            margin: 0 auto;
+            width: 500px;
+          }
+
+        form{
+            width: 100%;
+        }
+          input{
+            width: 90%;
+            height: 30px;
+            font-size: 17px;
+            margin: 10px auto;
+          }
+    </style>
+</head>
+<body>
+        <header>
+            <div class="logo">
+                <img src="public/img/imagem6.jpeg" alt="">
+            </div>
+            <div class="menu">
+                <ul>
+                    <li id="site"><a href="/adm/painel">Site</a></li>
+                    <li id="pedido"><a href="/adm/pedido">Pedido</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div style="height: 70px;"></div>
+
+
+        <div class="mostruarioAdm">
+            <h1>Mostruario pagina da loja</h1>
+            <form  enctype="multipart/form-data" method="post" action="/adm/cadastro">
+                <!-- <input type="file" name="arquivo"> -->
+                <input type="text" name="link" placeholder="link da imagem">
+               
+                <input type="submit" value="enviar">
+            </form>
+            <br>
+            <h1>Fila Mostruario</h1>
+            <div class="fila"  style="display: flex; width: 100%; gap : 20px; flex-wrap: wrap;"  >
+                <%for(let i = 0; i < mostruarioLoja.length; i++){ %>
+                <div>
+                    <img width="200px;" style="object-fit: cover; background-color: green; height: 150px" src="<%= mostruarioLoja[i].img %>" alt="">
+                </div>
+                <% } %>
+                
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="produtosAdm">
+            <h1>produtos</h1>
+            <form enctype="multipart/form-data" method="post" action="/produto/cadastro">
+                <input type="text" name="linkP" placeholder="link da imagem">
+                <input type="text" name="nome" placeholder="produto">
+                <input type="text" name="valor" placeholder="valor">
+                <input type="text" name="slug" placeholder="caminho">
+                <input type="submit" value="enviar">
+            </form>
+            <br>
+            <h1>Fila produtos</h1>
+            <div class="fila"  style="display: flex; width: 100%; gap : 20px; flex-wrap: wrap;"  >
+                <%for(let i = 0; i < produtos.length; i++){ %>
+                <div>
+                    <img width="200px;" style="object-fit: cover; background-color: green;height: 150px" src="<%= produtos[i].img %>" alt="">
+                </div>
+                <% } %>
+                
+            </div>
+        </div>
+        
+        <%- include('partials/script.html') %>
+</body>
+</html>

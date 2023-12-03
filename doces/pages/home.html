@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="black">
+    <header style="z-index: 999;">
+        <div class="logo">
+            <img src="public/img/imagem6.jpeg" alt="">
+        </div>
+        <div class="menu">
+            <ul>
+                <li id="home">Home</li>
+                <li id="produtos">Produtos</li>
+                <li id="produtos"><a style="text-decoration: none;color: black;" href="/page/contato">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="separador" style="height: 70px;"></div>
+    <section class="banner">
+        <div class="black" style="width: 100%; height: 600px; opacity: 0.5; background-color: black; z-index: 2; position: absolute;"></div>
+        <img  class="imgBanner"  src="/public/img/img9.jpg" alt="" style="position: absolute; z-index: 1; ">
+        <div class="textoBanner" style="z-index: 3; position: relative;">
+            <h1>Receita no Verso</h1>
+        </div>
+    </section>
+
+    <div class="sobre">
+       <p><b>  <%= sobre[0].sobre %> </b></p>  
+    </div>
+    
+    <!-- <div style="height: 150px;"></div> -->
+    <section class="mostruario">
+        <%for(let i = 0; i < mostruarioLoja.length; i++){ %>
+            <img src="<%= mostruarioLoja[i].img %>" alt="">
+            <% if ((i + 1) % 3 === 0) { %>
+                <br>
+                <br>
+            <% } %>
+        <% } %>
+        
+       
+    </section>
+    <div style="height: 250px;"></div>
+
+    <!-- <div style="height: 100px;"></div> -->
+    <!-- <div style="height: 100px;"></div> -->
+    
+    <div class="feedbacks">
+        <h1>Experiência</h1>
+        <br>
+        <br>
+        <%for(let i = 0; i < feedbacks.length; i++){ %>
+            <div class="tFeed">
+                <h1><%= feedbacks[i].nome %></h1>
+                <br>
+                <p><%= feedbacks[i].texto %></p>
+            </div>
+        <% } %>
+        
+    </div>
+    <footer>
+        Todos os direitos reservados.
+    </footer>
+
+    <%- include('partials/script.html') %>
+    
+</div>
+
+
+</body>
+</html>
